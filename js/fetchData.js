@@ -12,7 +12,9 @@ export async function fetchOrderData() {
             throw new Error(`Error: ${response.statusText}`);
         }
 
-        return await response.json();
+        const data = await response.json();
+        console.log('Datos obtenidos del servidor:', data);  // Verifica la estructura aquí
+        return data;
     } catch (error) {
         console.error('Error fetching order data:', error);
         throw error;
