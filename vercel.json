@@ -1,9 +1,6 @@
 {
     "rewrites": [
-      {
-        "source": "/api/proxy",
-        "destination": "https://technical-test.webmefy.io/webmefy/data"
-      }
+      { "source": "/api/:path*", "destination": "/api/:path*" }
     ]
   }
   
