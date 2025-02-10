@@ -1,0 +1,463 @@
+{
+    "order": {
+        "id": 5662215471393,
+        "admin_graphql_api_id": "gid://shopify/Order/5662215471393",
+        "app_id": 1354745,
+        "browser_ip": "47.62.110.110",
+        "buyer_accepts_marketing": false,
+        "cancel_reason": null,
+        "cancelled_at": null,
+        "cart_token": null,
+        "checkout_id": 37154428977441,
+        "checkout_token": "8654a6d316618fbc6ea81505bb69473c",
+        "client_details": {
+            "accept_language": null,
+            "browser_height": null,
+            "browser_ip": "47.62.110.110",
+            "browser_width": null,
+            "session_hash": null,
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+        },
+        "closed_at": null,
+        "company": null,
+        "confirmed": true,
+        "contact_email": "alvaro.moreno@webmefy.com",
+        "created_at": "2024-02-09T07:01:27-05:00",
+        "currency": "EUR",
+        "current_subtotal_price": "4134.80",
+        "current_subtotal_price_set": {
+            "shop_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            }
+        },
+        "current_total_additional_fees_set": null,
+        "current_total_discounts": "0.00",
+        "current_total_discounts_set": {
+            "shop_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            }
+        },
+        "current_total_duties_set": null,
+        "current_total_price": "4134.80",
+        "current_total_price_set": {
+            "shop_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            }
+        },
+        "current_total_tax": "0.00",
+        "current_total_tax_set": {
+            "shop_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            }
+        },
+        "customer_locale": "es-ES",
+        "device_id": null,
+        "discount_codes": [],
+        "email": "alvaro.moreno@webmefy.com",
+        "estimated_taxes": false,
+        "financial_status": "paid",
+        "fulfillment_status": null,
+        "landing_site": null,
+        "landing_site_ref": null,
+        "location_id": null,
+        "merchant_of_record_app_id": null,
+        "name": "#1023",
+        "note": null,
+        "note_attributes": [
+            {
+                "name": "bundles",
+                "value": "[{\"price\":\"79.00\",\"id\":48164482416958,\"sku\":\"TUPCA\",\"title\":\"Tupelo Cardigan - 1.0 / 8mm Straight Knitting Needles / L\",\"quantity\":1,\"bundle\":[{\"quantity\":\"1\",\"name\":\"8mm Straight Knitting Needles\",\"sku\":\"WAK-NEE-1008-0\",\"id\":\"48164195270974\"},{\"quantity\":1,\"name\":\"Tupelo Cardigan Pattern\",\"sku\":\"tupelo-cardigan-pattern\",\"id\":\"48164851220798\"},{\"id\":\"48164204478782\",\"name\":\"Petite Wool Wine\",\"sku\":\"WAK-PET-9961-0\",\"quantity\":6}]}]"
+            }
+        ],
+        "number": 23,
+        "order_number": 1023,
+        "order_status_url": "https://webmefy-test.myshopify.com/81890836769/orders/006909a1ce682ca87dd854cc532904be/authenticate?key=c917d4a5331e8997619857b297382ad0",
+        "original_total_additional_fees_set": null,
+        "original_total_duties_set": null,
+        "payment_gateway_names": [
+            "manual"
+        ],
+        "phone": null,
+        "presentment_currency": "EUR",
+        "processed_at": "2024-02-09T07:01:26-05:00",
+        "reference": "dce3d00c902415150b43e0f1b0ae54d8",
+        "referring_site": null,
+        "source_identifier": "dce3d00c902415150b43e0f1b0ae54d8",
+        "source_name": "shopify_draft_order",
+        "source_url": null,
+        "subtotal_price": "4134.80",
+        "subtotal_price_set": {
+            "shop_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            }
+        },
+        "tags": "",
+        "tax_lines": [],
+        "taxes_included": true,
+        "test": false,
+        "token": "006909a1ce682ca87dd854cc532904be",
+        "total_discounts": "0.00",
+        "total_discounts_set": {
+            "shop_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            }
+        },
+        "total_line_items_price": "4134.80",
+        "total_line_items_price_set": {
+            "shop_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            }
+        },
+        "total_outstanding": "0.00",
+        "total_price": "4134.80",
+        "total_price_set": {
+            "shop_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "4134.80",
+                "currency_code": "EUR"
+            }
+        },
+        "total_shipping_price_set": {
+            "shop_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            }
+        },
+        "total_tax": "0.00",
+        "total_tax_set": {
+            "shop_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            },
+            "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "EUR"
+            }
+        },
+        "total_tip_received": "0.00",
+        "total_weight": 56,
+        "updated_at": "2024-02-09T07:01:28-05:00",
+        "user_id": 103898120481,
+        "billing_address": {
+            "first_name": "dfgfg",
+            "address1": "sdfgsdfg",
+            "phone": null,
+            "city": "madrid",
+            "zip": "28026",
+            "province": "Madrid",
+            "country": "Spain",
+            "last_name": "sdgfsdg",
+            "address2": null,
+            "company": null,
+            "latitude": 40.3848083,
+            "longitude": -3.7054373,
+            "name": "dfgfg sdgfsdg",
+            "country_code": "ES",
+            "province_code": "M"
+        },
+        "customer": {
+            "id": 7425713176865,
+            "email": "test@webmefy.com",
+            "created_at": "2023-10-20T07:55:24-04:00",
+            "updated_at": "2024-02-09T07:01:27-05:00",
+            "first_name": "test",
+            "last_name": "testing",
+            "state": "disabled",
+            "note": null,
+            "verified_email": true,
+            "multipass_identifier": null,
+            "tax_exempt": false,
+            "phone": null,
+            "email_marketing_consent": {
+                "state": "not_subscribed",
+                "opt_in_level": "single_opt_in",
+                "consent_updated_at": null
+            },
+            "sms_marketing_consent": null,
+            "tags": "",
+            "currency": "EUR",
+            "accepts_marketing": false,
+            "accepts_marketing_updated_at": null,
+            "marketing_opt_in_level": "single_opt_in",
+            "tax_exemptions": [],
+            "admin_graphql_api_id": "gid://shopify/Customer/7425713176865",
+            "default_address": {
+                "id": 9664752648481,
+                "customer_id": 7425713176865,
+                "first_name": "dfgfg",
+                "last_name": "sdgfsdg",
+                "company": null,
+                "address1": "sdfgsdfg",
+                "address2": null,
+                "city": "madrid",
+                "province": "Madrid",
+                "country": "Spain",
+                "zip": "28026",
+                "phone": null,
+                "name": "dfgfg sdgfsdg",
+                "province_code": "M",
+                "country_code": "ES",
+                "country_name": "Spain",
+                "default": true
+            }
+        },
+        "discount_applications": [],
+        "fulfillments": [],
+        "line_items": [
+            {
+                "id": 14452553220385,
+                "admin_graphql_api_id": "gid://shopify/LineItem/14452553220385",
+                "fulfillable_quantity": 1,
+                "fulfillment_service": "manual",
+                "fulfillment_status": null,
+                "gift_card": false,
+                "grams": 0,
+                "name": "The Collection Snowboard: Liquid",
+                "price": "749.95",
+                "price_set": {
+                    "shop_money": {
+                        "amount": "749.95",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "749.95",
+                        "currency_code": "EUR"
+                    }
+                },
+                "product_exists": true,
+                "product_id": 8592622649633,
+                "properties": [],
+                "quantity": 1,
+                "requires_shipping": true,
+                "sku": "",
+                "image": "https://cdn.shopify.com/s/files/1/0818/9083/6769/products/Main_0a4e9096-021a-4c1e-8750-24b233166a12.jpg?v=1693985641",
+                "taxable": true,
+                "title": "The Collection Snowboard: Liquid",
+                "total_discount": "0.00",
+                "total_discount_set": {
+                    "shop_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    }
+                },
+                "variant_id": 46741187264801,
+                "variant_inventory_management": "shopify",
+                "variant_title": null,
+                "vendor": "Hydrogen Vendor",
+                "tax_lines": [],
+                "duties": [],
+                "discount_allocations": []
+            },
+            {
+                "id": 14452553253153,
+                "admin_graphql_api_id": "gid://shopify/LineItem/14452553253153",
+                "fulfillable_quantity": 1,
+                "fulfillment_service": "manual",
+                "fulfillment_status": null,
+                "gift_card": false,
+                "grams": 0,
+                "name": "The Multi-location Snowboard",
+                "price": "729.95",
+                "price_set": {
+                    "shop_money": {
+                        "amount": "729.95",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "729.95",
+                        "currency_code": "EUR"
+                    }
+                },
+                "product_exists": true,
+                "product_id": 8592622387489,
+                "properties": [],
+                "quantity": 1,
+                "requires_shipping": true,
+                "sku": "",
+                "image": "https://cdn.shopify.com/s/files/1/0818/9083/6769/products/Main_d624f226-0a89-4fe1-b333-0d1548b43c06.jpg?v=1693985641",
+                "taxable": true,
+                "title": "The Multi-location Snowboard",
+                "total_discount": "0.00",
+                "total_discount_set": {
+                    "shop_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    }
+                },
+                "variant_id": 46741186674977,
+                "variant_inventory_management": "shopify",
+                "variant_title": null,
+                "vendor": "webmefy-test",
+                "tax_lines": [],
+                "duties": [],
+                "discount_allocations": []
+            },
+            {
+                "id": 14452553285921,
+                "admin_graphql_api_id": "gid://shopify/LineItem/14452553285921",
+                "fulfillable_quantity": 1,
+                "fulfillment_service": "manual",
+                "fulfillment_status": null,
+                "gift_card": false,
+                "grams": 57,
+                "name": "Selling Plans Ski Wax - Selling Plans Ski Wax",
+                "price": "24.95",
+                "price_set": {
+                    "shop_money": {
+                        "amount": "24.95",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "24.95",
+                        "currency_code": "EUR"
+                    }
+                },
+                "product_exists": true,
+                "product_id": 8592622682401,
+                "properties": [],
+                "quantity": 1,
+                "requires_shipping": true,
+                "sku": "",
+                "image": "https://cdn.shopify.com/s/files/1/0818/9083/6769/products/snowboard_wax.png?v=1693985643",
+                "taxable": true,
+                "title": "Selling Plans Ski Wax",
+                "total_discount": "0.00",
+                "total_discount_set": {
+                    "shop_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    }
+                },
+                "variant_id": 46741187297569,
+                "variant_inventory_management": null,
+                "variant_title": "Selling Plans Ski Wax",
+                "vendor": "webmefy-test",
+                "tax_lines": [],
+                "duties": [],
+                "discount_allocations": []
+            },
+            {
+                "id": 14452553318689,
+                "admin_graphql_api_id": "gid://shopify/LineItem/14452553318689",
+                "fulfillable_quantity": 1,
+                "fulfillment_service": "snow-city-warehouse",
+                "fulfillment_status": null,
+                "gift_card": false,
+                "grams": 0,
+                "name": "The 3p Fulfilled Snowboard",
+                "price": "2629.95",
+                "price_set": {
+                    "shop_money": {
+                        "amount": "2629.95",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "2629.95",
+                        "currency_code": "EUR"
+                    }
+                },
+                "product_exists": true,
+                "product_id": 8592622518561,
+                "properties": [],
+                "quantity": 1,
+                "requires_shipping": true,
+                "sku": "sku-hosted-1",
+                "image": "https://cdn.shopify.com/s/files/1/0818/9083/6769/products/Main_0a40b01b-5021-48c1-80d1-aa8ab4876d3d.jpg?v=1693985640",
+                "taxable": true,
+                "title": "The 3p Fulfilled Snowboard",
+                "total_discount": "0.00",
+                "total_discount_set": {
+                    "shop_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    },
+                    "presentment_money": {
+                        "amount": "0.00",
+                        "currency_code": "EUR"
+                    }
+                },
+                "variant_id": 46741186773281,
+                "variant_inventory_management": "shopify",
+                "variant_title": null,
+                "vendor": "webmefy-test",
+                "tax_lines": [],
+                "duties": [],
+                "discount_allocations": []
+            }
+        ],
+        "payment_terms": null,
+        "refunds": [],
+        "shipping_address": {
+            "first_name": "dfgfg",
+            "address1": "sdfgsdfg",
+            "phone": null,
+            "city": "madrid",
+            "zip": "28026",
+            "province": "Madrid",
+            "country": "Spain",
+            "last_name": "sdgfsdg",
+            "address2": null,
+            "company": null,
+            "latitude": null,
+            "longitude": null,
+            "name": "dfgfg sdgfsdg",
+            "country_code": "ES",
+            "province_code": "M"
+        },
+        "shipping_lines": []
+    }
+}
