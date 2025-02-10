@@ -15,5 +15,6 @@ export async function fetchOrderData() {
         return await response.json();
     } catch (error) {
         console.error('Error fetching order data:', error);
+        throw error;
     }
 }
