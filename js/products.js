@@ -38,39 +38,30 @@ export function displayProducts(products) {
 }
 
 function attachProductEvents(products) {
-    // Manejar "Add to Cart"
-    document.querySelectorAll('.product-card__btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const productIndex = e.target.getAttribute('data-index');
-            const product = products[productIndex];
-
-            if (!product || !product.title || !product.price) {
-                console.warn("Product data is incomplete:", product);
-                alert("Product data is incomplete. Unable to add to cart.");
-                return;
-            }
-
-            addToCart(product);
-
-            // Mensaje visual opcional (feedback)
-            e.target.textContent = 'Added!';
-            setTimeout(() => (e.target.textContent = 'Add to Cart'), 1500);
-        });
-    });
-
-    // Manejar "View Details"
     document.querySelectorAll('.product-detail-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            const productIndex = e.target.getAttribute('data-index');
-            const product = products[productIndex];
+            const productId = e.target.getAttribute('data-id');
+            const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
 
-            if (!product || !product.title || !product.price || !product.img) {
+            // Ajustar acceso a las propiedades según la estructura real del JSON
+            const productTitle = product.title || product.name || 'Unnamed Product';
+            const productPrice = product.price || product.base_price || 0;
+            const productImage = product.image || product.featured_image?.src || 'img/default-product.png';
+
+            if (!productTitle || !productPrice || !productImage) {
                 console.warn("Product data is incomplete for details view:", product);
                 alert("Product data is incomplete. Unable to view details.");
                 return;
             }
 
-            saveProductToLocalStorage(product);
+            saveProductToLocalStorage({
+                id: productId,
+                title: productTitle,
+                price: productPrice,
+                img: productImage,
+                vendor: product.vendor || 'Unknown Vendor',
+            });
         });
     });
 }
+

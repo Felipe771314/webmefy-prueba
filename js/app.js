@@ -28,11 +28,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Evento para mostrar/ocultar el carrito
     console.log('Attaching cart toggle event...');
-    document.getElementById('view-cart')?.addEventListener('click', () => {
-      const cartSection = document.getElementById('cart-section');
-      cartSection.classList.toggle('cart--hidden');
-      console.log('Cart toggle triggered', cartSection.classList.contains('cart--hidden') ? 'Hidden' : 'Visible');
-    });
+document.getElementById('view-cart')?.addEventListener('click', () => {
+  const cartSection = document.getElementById('cart-section');
+  cartSection.classList.toggle('cart--hidden');
+
+  // Probar visualmente el estado del carrito
+  console.log('Cart toggle triggered', cartSection.classList.contains('cart--hidden') ? 'Hidden' : 'Visible');
+});
+
 
   } catch (error) {
     console.error("Error al inicializar la aplicación:", error);

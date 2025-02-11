@@ -116,11 +116,10 @@ body {
   transition: transform 0.4s ease-in-out;
   overflow-y: auto;
   max-height: 80vh;
-  transform: translateX(100%);
 }
 
 .cart--hidden {
-  transform: translateX(100%);
+  transform: translateX(100%); /* Oculta el carrito */
 }
 
 .cart__title {
