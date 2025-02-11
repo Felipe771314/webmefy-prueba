@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Shopify Dashboard</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header__logo">🛍️ Shopify Dashboard</div>
-    </header>
+<section id="step-1" class="checkout-step">
+  <h2>Step 1: Customer Information</h2>
+  <input type="text" placeholder="Full Name" required>
+  <input type="email" placeholder="Email" required>
+</section>
 
-    <main class="main">
-        <section class="order-summary">
-            <h1 class="order-summary__title">Order Summary</h1>
-            <div id="order-summary" class="order-summary__details"></div>
-        </section>
-    </main>
+<section id="step-2" class="checkout-step">
+  <h2>Step 2: Address</h2>
+  <input type="text" placeholder="Street" required>
+  <input type="text" placeholder="City" required>
+</section>
 
-    <script src="js/checkout.js" type="module"></script>
-</body>
-</html>
+<section id="step-3" class="checkout-step">
+  <h2>Step 3: Payment Method</h2>
+  <select required>
+      <option value="credit-card">Credit Card</option>
+      <option value="paypal">PayPal</option>
+  </select>
+</section>
+
+<section id="summary-step" class="checkout-step">
+  <h2>Order Summary</h2>
+  <div id="summary-items"></div>
+</section>
+
+<button id="prev-btn">Previous</button>
+<button id="next-btn">Next</button>

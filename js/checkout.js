@@ -1,30 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    displayCheckoutSummary(cart);
+let currentStep = 0;
+
+const steps = [
+    document.getElementById('step-1'),
+    document.getElementById('step-2'),
+    document.getElementById('step-3'),
+    document.getElementById('summary-step')
+];
+
+function showStep(stepIndex) {
+    steps.forEach((step, index) => {
+        step.style.display = stepIndex === index ? 'block' : 'none';
+    });
+    currentStep = stepIndex;
+}
+
+document.getElementById('next-btn').addEventListener('click', () => {
+    if (currentStep < steps.length - 1) showStep(currentStep + 1);
 });
 
-function displayCheckoutSummary(cart) {
-    const summaryContainer = document.getElementById('order-summary');
-    summaryContainer.innerHTML = '';
+document.getElementById('prev-btn').addEventListener('click', () => {
+    if (currentStep > 0) showStep(currentStep - 1);
+});
 
-    let totalAmount = 0;
-
-    cart.forEach(item => {
-        const itemTotal = parseFloat(item.price);
-        totalAmount += itemTotal;
-
-        const summaryItem = document.createElement('div');
-        summaryItem.classList.add('order-summary__item');
-        summaryItem.innerHTML = `
-            <p>${item.title} (SKU: ${item.sku})</p>
-            <p>Vendor: ${item.vendor}</p>
-            <p>Price: €${itemTotal.toFixed(2)}</p>
-        `;
-        summaryContainer.appendChild(summaryItem);
-    });
-
-    const totalElement = document.createElement('div');
-    totalElement.classList.add('order-summary__total');
-    totalElement.innerHTML = `<p>Total: €${totalAmount.toFixed(2)}</p>`;
-    summaryContainer.appendChild(totalElement);
-}
+showStep(0); // Mostrar primer paso al cargar la página

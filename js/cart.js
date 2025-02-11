@@ -12,32 +12,31 @@ export function addToCart(product) {
 
 function updateCartUI(cart) {
     const cartItemsContainer = document.getElementById('cart-items');
-    const cartCount = document.getElementById('cart-count');
-    const checkoutButton = document.getElementById('checkout-btn');
-
-    if (!cartItemsContainer || !cartCount || !checkoutButton) {
-        console.error('Cart elements not found in the DOM.');
-        return;
-    }
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>No items in cart</p>';
-    }
-    
     cartItemsContainer.innerHTML = '';
-    cartCount.textContent = cart.length;
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart__item');
         cartItem.innerHTML = `
             <img class="cart__item-img" src="${item.img}" alt="${item.title}">
-            <p>${item.title} - €${parseFloat(item.price).toFixed(2)}</p>
+            <div class="cart__item-info">
+                <p>${item.title} - €${parseFloat(item.price).toFixed(2)}</p>
+                <button class="cart__remove-btn" data-index="${index}">Remove</button>
+            </div>
         `;
         cartItemsContainer.appendChild(cartItem);
     });
 
-    checkoutButton.disabled = cart.length === 0;
+    document.querySelectorAll('.cart__remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.dataset.index;
+            cart.splice(index, 1);
+            saveCartToLocalStorage(cart);
+            updateCartUI(cart);
+        });
+    });
 }
+
 
 
 export function proceedToCheckout() {
