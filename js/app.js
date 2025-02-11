@@ -1,16 +1,30 @@
-import { fetchOrderData } from './fetchData.js';
-import { displayProducts } from './products.js';
-import { initializeCart, proceedToCheckout } from './cart.js';
+import { fetchOrderData } from "./fetchData.js";
+import { displayProducts } from "./products.js";
+import { initializeCart, proceedToCheckout } from "./cart.js";
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const orderData = await fetchOrderData();
-        displayProducts(orderData.order.line_items);
-        initializeCart();
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const orderData = await fetchOrderData();
 
-        // Evento para el botón de checkout
-        document.getElementById('checkout-btn').addEventListener('click', proceedToCheckout);
-    } catch (error) {
-        console.error('Error al inicializar la aplicación:', error);
+    if (
+      !orderData ||
+      !orderData.order ||
+      !Array.isArray(orderData.order.line_items)
+    ) {
+      throw new Error("Invalid or empty order data.");
     }
+
+    displayProducts(orderData.order.line_items);
+    initializeCart();
+
+    const checkoutBtn = document.getElementById("checkout-btn");
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener("click", proceedToCheckout);
+    } else {
+      console.warn("Checkout button not found.");
+    }
+  } catch (error) {
+    console.error("Error al inicializar la aplicación:", error);
+    alert("There was a problem loading the products. Please try again later.");
+  }
 });
