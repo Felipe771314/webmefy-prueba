@@ -1,33 +1,31 @@
-import { addToCart } from "./cart.js";
-import { saveProductToLocalStorage } from "./utils.js";
+import { addToCart } from './cart.js';
+import { saveProductToLocalStorage } from './utils.js';
 
 /**
  * 1. Renderiza la lista de productos en la interfaz de usuario.
  * @param {Array} products - Lista de productos a mostrar.
  */
 export function displayProducts(products) {
-  const productsList = document.getElementById("products-list");
-  productsList.innerHTML = ""; // Limpia la lista antes de renderizar
+  const productsList = document.getElementById('products-list');
+  productsList.innerHTML = ''; // Limpia la lista antes de renderizar
 
   products.forEach((product, index) => {
     // 2. Asignar un ID único al producto (usando SKU si está disponible)
     const productId = product.sku || `product-${index}`;
 
     // 3. Validación y asignación de valores predeterminados
-    const productTitle = product.title || "Unnamed Product";
-    const productPrice = product.price || "0.00";
-    const productImage = product.image || "img/default-product.png";
-    const productVendor = product.vendor || "Unknown Vendor";
+    const productTitle = product.title || 'Unnamed Product';
+    const productPrice = product.price || '0.00';
+    const productImage = product.image || 'img/default-product.png';
+    const productVendor = product.vendor || 'Unknown Vendor';
 
     // 4. Creación de la tarjeta de producto
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
     productCard.innerHTML = `
       <img class="product-card__img" src="${productImage}" alt="${productTitle}">
       <h3 class="product-card__title">${productTitle}</h3>
-      <p class="product-card__price">Price: €${parseFloat(productPrice).toFixed(
-        2
-      )}</p>
+      <p class="product-card__price">Price: €${parseFloat(productPrice).toFixed(2)}</p>
       <p class="product-card__vendor">Vendor: ${productVendor}</p>
       <p class="product-card__sku">ID: ${productId}</p>
       <div class="product-card__actions">
@@ -48,12 +46,10 @@ export function displayProducts(products) {
  */
 function attachProductEvents(products) {
   // Evento "Add to Cart"
-  document.querySelectorAll(".product-card__btn").forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const productId = e.target.getAttribute("data-id");
-      const product = products.find(
-        (p, index) => p.sku === productId || `product-${index}` === productId
-      );
+  document.querySelectorAll('.product-card__btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const productId = e.target.getAttribute('data-id');
+      const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
 
       // 7. Verificar si los datos del producto son válidos
       if (!product || !product.title || !product.price) {
@@ -66,18 +62,16 @@ function attachProductEvents(products) {
       addToCart(product);
 
       // Mensaje de confirmación temporal
-      e.target.textContent = "Added!";
-      setTimeout(() => (e.target.textContent = "Add to Cart"), 1500);
+      e.target.textContent = 'Added!';
+      setTimeout(() => (e.target.textContent = 'Add to Cart'), 1500);
     });
   });
 
   // Evento "View Details"
-  document.querySelectorAll(".product-detail-link").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const productId = e.target.getAttribute("data-id");
-      const product = products.find(
-        (p, index) => p.sku === productId || `product-${index}` === productId
-      );
+  document.querySelectorAll('.product-detail-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const productId = e.target.getAttribute('data-id');
+      const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
 
       // 9. Verificar si los datos del producto son válidos para mostrar los detalles
       if (!product || !product.title || !product.price || !product.image) {
@@ -86,8 +80,8 @@ function attachProductEvents(products) {
         return;
       }
 
-      // 10. Guardar los detalles del producto en localStorage utilizando la función reutilizable
-      saveProductToLocalStorage(product);
+      // 10. Guardar los detalles del producto en localStorage
+      localStorage.setItem('selectedProduct', JSON.stringify(product));
     });
   });
 }
