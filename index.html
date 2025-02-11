@@ -20,7 +20,12 @@
             <div id="products-list"></div>
         </section>
     </main>
-
-    <script type="module" src="js/app.js"></script>
+    <aside id="cart-section" class="cart cart--hidden">
+      <h2 class="cart__title">Cart Summary</h2>
+      <div id="cart-items" class="cart__items"></div>
+      <button id="checkout-btn" class="cart__checkout-btn" disabled>Proceed to Checkout</button>
+  </aside>
+  
+  <script src="js/app.js" type="module" defer></script>
 </body>
 </html>

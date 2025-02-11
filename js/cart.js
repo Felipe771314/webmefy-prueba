@@ -13,6 +13,16 @@ export function addToCart(product) {
 function updateCartUI(cart) {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
+    const checkoutButton = document.getElementById('checkout-btn');
+
+    if (!cartItemsContainer || !cartCount || !checkoutButton) {
+        console.error('Cart elements not found in the DOM.');
+        return;
+    }
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>No items in cart</p>';
+    }
+    
     cartItemsContainer.innerHTML = '';
     cartCount.textContent = cart.length;
 
@@ -26,9 +36,9 @@ function updateCartUI(cart) {
         cartItemsContainer.appendChild(cartItem);
     });
 
-    const checkoutButton = document.getElementById('checkout-btn');
     checkoutButton.disabled = cart.length === 0;
 }
+
 
 export function proceedToCheckout() {
     window.location.href = 'checkout.html';
