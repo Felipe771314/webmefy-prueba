@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Shopify Dashboard</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Shopify Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header__logo">🛒 <strong>Checkout</strong></div>
-  </header>
+    <header class="header">
+        <div class="header__logo">🛍️ Shopify Dashboard</div>
+    </header>
 
-  <main class="main">
-    <section class="order-summary">
-      <h2>Order Summary</h2>
-      <div id="order-summary" class="order-summary__details"></div>
-    </section>
+    <main class="main">
+        <section class="order-summary">
+            <h1 class="order-summary__title">Order Summary</h1>
+            <div id="order-summary" class="order-summary__details"></div>
+        </section>
+    </main>
 
-    <section class="customer-info">
-      <h2>Customer Information</h2>
-      <div id="customer-details"></div>
-    </section>
-
-    <section class="cross-selling">
-      <h2>Suggested Products</h2>
-      <div id="cross-selling-products" class="cross-selling__list"></div>
-    </section>
-
-    <footer>
-      <button id="confirm-order-btn" class="btn">Confirm Order</button>
-    </footer>
-  </main>
-
-  <script src="js/checkout.js"></script>
+    <script src="js/checkout.js" type="module"></script>
 </body>
 </html>
