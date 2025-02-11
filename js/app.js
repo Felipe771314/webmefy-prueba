@@ -2,27 +2,7 @@ import { fetchOrderData } from "./fetchData.js";
 import { displayProducts } from "./products.js";
 import { initializeCart } from "./cart.js";
 
-// Función para mostrar una modal de error y refrescar la página
-function showErrorModal(errorMessage) {
-  // Crear el elemento de la modal
-  const modal = document.createElement("div");
-  modal.classList.add("error-modal");
-  modal.innerHTML = `
-    <div class="error-modal__content">
-      <h2>Error</h2>
-      <p>${errorMessage}</p>
-      <button id="refresh-page">Refresh Page</button>
-    </div>
-  `;
 
-  // Agregar la modal al cuerpo del documento
-  document.body.appendChild(modal);
-
-  // Agregar evento para refrescar la página
-  document.getElementById("refresh-page").addEventListener("click", () => {
-    window.location.reload();
-  });
-}
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -66,9 +46,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   } catch (error) {
     console.error("Error al inicializar la aplicación:", error);
-    // Mostrar la modal de error
-    showErrorModal(
-      "An unexpected error occurred. Please try refreshing the page."
-    );
   }
 });
