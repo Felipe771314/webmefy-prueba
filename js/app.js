@@ -41,9 +41,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 3. Mostrar los productos y configurar el carrito
     displayProducts(orderData.order.line_items);
     initializeCart();
-    setTimeout(() => {
-      throw new Error("Simulated runtime error.");
-    }, 2000);
 
     // 4. Asignar evento al botón de "Checkout"
     const checkoutBtn = document.getElementById("checkout-btn");
