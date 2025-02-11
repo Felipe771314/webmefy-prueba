@@ -1,4 +1,3 @@
-// ------------ products.js ------------
 import { addToCart } from './cart.js';
 import { saveProductToLocalStorage } from './utils.js';
 
@@ -7,22 +6,25 @@ export function displayProducts(products) {
     productsList.innerHTML = '';
 
     products.forEach(product => {
-        if (!product.title || !product.price || !product.image) {
-            console.warn('Skipping product with missing details:', product);
-            return;
-        }
+        // Verificación de datos mínimos
+        const productTitle = product.title || 'Unnamed Product';
+        const productPrice = product.price || '0.00';
+        const productImage = product.image || 'img/default-product.png';
+        const productVendor = product.vendor || 'Unknown Vendor';
+        const productSKU = product.sku || 'N/A';
 
+        // Creación de la tarjeta de producto
         const productCard = document.createElement('div');
         productCard.classList.add('product-card');
-
         productCard.innerHTML = `
-            <img class="product-card__img" src="${product.image}" alt="Image of ${product.title}">
-            <h3 class="product-card__title">${product.title}</h3>
-            <p class="product-card__price">Price: €${parseFloat(product.price).toFixed(2)}</p>
-            <p class="product-card__vendor">Vendor: ${product.vendor || 'Unknown Vendor'}</p>
+            <img class="product-card__img" src="${productImage}" alt="${productTitle}">
+            <h3 class="product-card__title">${productTitle}</h3>
+            <p class="product-card__price">Price: €${parseFloat(productPrice).toFixed(2)}</p>
+            <p class="product-card__vendor">Vendor: ${productVendor}</p>
+            <p class="product-card__sku">SKU: ${productSKU}</p>
             <div class="product-card__actions">
-                <button class="product-card__btn" aria-label="Add ${product.title} to cart" data-product-id="${product.id}">Add to Cart</button>
-                <a href="product-detail.html" class="product-detail-link" data-product-id="${product.id}">View Details</a>
+                <button class="product-card__btn" data-sku="${productSKU}">Add to Cart</button>
+                <a href="product-detail.html" class="product-detail-link" data-sku="${productSKU}">View Details</a>
             </div>
         `;
         productsList.appendChild(productCard);
@@ -32,45 +34,41 @@ export function displayProducts(products) {
 }
 
 function attachProductEvents(products) {
+    // Manejar "Add to Cart"
     document.querySelectorAll('.product-card__btn').forEach(button => {
         button.addEventListener('click', (e) => {
-            const productId = e.target.getAttribute('data-product-id');
-            const product = products.find(p => p.id.toString() === productId);
-            if (product) {
-                addToCart(product);
-            } else {
-                console.error('Product not found for cart:', productId);
+            const productSKU = e.target.getAttribute('data-sku');
+            const product = products.find(p => p.sku === productSKU);
+
+            // Verificar que el producto tiene datos mínimos
+            if (!product || !product.title || !product.price || !product.sku) {
+                console.warn("Product data is incomplete:", product);
+                alert("Product data is incomplete. Unable to add to cart.");
+                return;
             }
+
+            addToCart(product);
+
+            // Mensaje visual opcional (feedback)
+            e.target.textContent = 'Added!';
+            setTimeout(() => (e.target.textContent = 'Add to Cart'), 1500);
         });
     });
 
+    // Manejar "View Details"
     document.querySelectorAll('.product-detail-link').forEach(link => {
         link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const product = JSON.parse(e.target.getAttribute('data-product'));
-          saveProductToLocalStorage(product);
-          window.location.href = 'product-detail.html';
+            const productSKU = e.target.getAttribute('data-sku');
+            const product = products.find(p => p.sku === productSKU);
+
+            // Verificar que el producto tiene datos mínimos antes de guardarlo
+            if (!product || !product.title || !product.price || !product.img) {
+                console.warn("Product data is incomplete for details view:", product);
+                alert("Product data is incomplete. Unable to view details.");
+                return;
+            }
+
+            saveProductToLocalStorage(product);
         });
-      });
-      
-}
-function displayCrossSelling() {
-    const relatedProductsContainer = document.getElementById('related-products');
-    const relatedProducts = JSON.parse(localStorage.getItem('relatedProducts')) || [];
-  
-    relatedProducts.forEach(product => {
-      const item = document.createElement('div');
-      item.classList.add('cross-selling__item');
-      item.innerHTML = `
-        <img src="${product.img}" alt="${product.title}">
-        <p>${product.title}</p>
-        <button onclick="addToCart(${JSON.stringify(product)})">Add to Cart</button>
-      `;
-      relatedProductsContainer.appendChild(item);
     });
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    displayCrossSelling();
-  });
-  
+}

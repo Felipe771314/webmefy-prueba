@@ -9,18 +9,28 @@
 <body>
   <header class="header">
     <div class="header__logo">🛍️ Shopify Detail</div>
+    <nav class="header__nav">
+      <button id="view-cart" class="header__cart-btn">🛒 <span id="cart-count">0</span></button>
+    </nav>
   </header>
 
   <main class="main">
     <section id="product-detail" class="product-detail">
-      <!-- Detalle del producto se carga aquí -->
+      <!-- Detalle del producto cargado dinámicamente -->
     </section>
   </main>
+
   <section class="cross-selling">
     <h2 class="cross-selling__title">You may also like</h2>
     <div class="cross-selling__list" id="related-products"></div>
   </section>
-  
+
+  <aside id="cart-section" class="cart cart--hidden">
+    <h2 class="cart__title">Cart Summary</h2>
+    <div id="cart-items" class="cart__items"></div>
+    <button id="checkout-btn" class="cart__checkout-btn" disabled>Proceed to Checkout</button>
+  </aside>
+
   <script type="module" src="js/productDetail.js"></script>
 </body>
 </html>

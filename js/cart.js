@@ -5,7 +5,17 @@ export function initializeCart() {
 }
 
 export function addToCart(product) {
-    const cart = [...getCartFromLocalStorage(), product];
+    let cart = getCartFromLocalStorage();
+
+    // Verificar si el producto ya está en el carrito (usamos SKU como criterio)
+    const existingProduct = cart.find(item => item.sku === product.sku);
+    if (existingProduct) {
+        alert(`${product.title} is already in your cart.`);
+        return;
+    }
+
+    // Agregar producto y actualizar UI
+    cart.push(product);
     saveCartToLocalStorage(cart);
     updateCartUI(cart);
 }
@@ -64,9 +74,8 @@ function getCartFromLocalStorage() {
 function saveCartToLocalStorage(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
-const cartSection = document.getElementById('cart-section');
-const cartToggleButton = document.getElementById('view-cart');
 
-cartToggleButton.addEventListener('click', () => {
-    cartSection.classList.toggle('cart--hidden');
+// Manejar la visibilidad del carrito dinámicamente
+document.getElementById('view-cart')?.addEventListener('click', () => {
+    document.getElementById('cart-section')?.classList.toggle('cart--hidden');
 });
