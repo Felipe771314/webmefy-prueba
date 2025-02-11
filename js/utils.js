@@ -1,3 +1,4 @@
+// ------------ utils.js ------------
 
 /**
  * Verifica si `localStorage` está disponible.
@@ -5,13 +6,13 @@
  */
 function isLocalStorageAvailable() {
   try {
-    const testKey = "__test__";
-    localStorage.setItem(testKey, "test");
-    localStorage.removeItem(testKey);
-    return true;
+      const testKey = '__test__';
+      localStorage.setItem(testKey, 'test');
+      localStorage.removeItem(testKey);
+      return true;
   } catch (e) {
-    console.warn("LocalStorage is not available:", e);
-    return false;
+      console.warn('LocalStorage is not available:', e);
+      return false;
   }
 }
 
@@ -22,16 +23,13 @@ function isLocalStorageAvailable() {
 */
 function getFromLocalStorage(key) {
   if (!isLocalStorageAvailable()) return null;
-
+  
   try {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : null;
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : null;
   } catch (e) {
-    console.error(
-      `Error retrieving item with key "${key}" from localStorage:`,
-      e
-    );
-    return null;
+      console.error(`Error retrieving item with key "${key}" from localStorage:`, e);
+      return null;
   }
 }
 
@@ -42,11 +40,11 @@ function getFromLocalStorage(key) {
 */
 function saveToLocalStorage(key, value) {
   if (!isLocalStorageAvailable()) return;
-
+  
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
-    console.error(`Error saving item with key "${key}" to localStorage:`, e);
+      console.error(`Error saving item with key "${key}" to localStorage:`, e);
   }
 }
 
@@ -58,38 +56,33 @@ function removeFromLocalStorage(key) {
   if (!isLocalStorageAvailable()) return;
 
   try {
-    localStorage.removeItem(key);
+      localStorage.removeItem(key);
   } catch (e) {
-    console.error(
-      `Error removing item with key "${key}" from localStorage:`,
-      e
-    );
+      console.error(`Error removing item with key "${key}" from localStorage:`, e);
   }
 }
 
 // Exportar funciones específicas para productos
 export function getProductFromLocalStorage() {
-  return getFromLocalStorage("selectedProduct");
+  return getFromLocalStorage('selectedProduct');
 }
 
 export function saveProductToLocalStorage(product) {
   if (!isLocalStorageAvailable()) return;
 
   try {
-    localStorage.setItem(
-      "selectedProduct",
-      JSON.stringify({
-        title: product.title,
-        price: product.price,
-        img: product.img,
-        vendor: product.vendor || "Unknown Vendor",
-      })
-    );
+      localStorage.setItem('selectedProduct', JSON.stringify({
+          title: product.title,
+          price: product.price,
+          img: product.img,
+          vendor: product.vendor || 'Unknown Vendor'
+      }));
   } catch (e) {
-    console.error("Failed to save product to localStorage:", e);
+      console.error('Failed to save product to localStorage:', e);
   }
 }
 
+
 export function clearProductFromLocalStorage() {
-  removeFromLocalStorage("selectedProduct");
+  removeFromLocalStorage('selectedProduct');
 }
