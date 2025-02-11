@@ -62,22 +62,16 @@ function attachProductEvents(products) {
         link.addEventListener('click', (e) => {
             const productId = e.target.getAttribute('data-id');
             const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
-
+    
             if (!product || !product.title || !product.price || !product.image) {
                 console.warn("Product data is incomplete for details view:", product);
                 alert("Product data is incomplete. Unable to view details.");
                 return;
             }
-
-            // Guardar el producto completo en el localStorage
-            saveProductToLocalStorage({
-                id: productId,
-                title: product.title,
-                price: product.price,
-                img: product.image,
-                vendor: product.vendor,
-                sku: product.sku || `product-${index}`
-            });
+    
+            // Guardar el producto completo en localStorage con su id como clave
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
         });
     });
+    
 }

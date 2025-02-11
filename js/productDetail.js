@@ -1,7 +1,6 @@
-import { getProductFromLocalStorage } from './utils.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-    const product = getProductFromLocalStorage();
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
+
     const productDetailContainer = document.getElementById('product-detail');
 
     if (!product) {
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     productDetailContainer.innerHTML = `
         <div class="product-detail__wrapper">
             <div class="product-detail__image-container">
-                <img src="${product.img}" alt="${product.title}" class="product-detail__img">
+                <img src="${product.image}" alt="${product.title}" class="product-detail__img">
             </div>
             <div class="product-detail__info">
                 <h1>${product.title}</h1>
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addToCartFromDetail() {
-    const product = getProductFromLocalStorage();
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
     if (product) {
         import('./cart.js').then(({ addToCart }) => {
             addToCart(product);
