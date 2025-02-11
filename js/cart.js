@@ -16,7 +16,6 @@ function updateCartUI(cart) {
   const checkoutButton = document.getElementById('checkout-btn');
 
   if (!cartItemsContainer || !cartCount || !checkoutButton) {
-    console.warn("Some cart UI elements are missing.");
     return;
   }
 
@@ -61,7 +60,6 @@ function saveCartToLocalStorage(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Nueva función exportada
 export function proceedToCheckout() {
   window.location.href = 'checkout.html';
 }

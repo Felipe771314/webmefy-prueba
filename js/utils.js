@@ -1,4 +1,3 @@
-// ------------ utils.js ------------
 
 /**
  * Verifica si `localStorage` está disponible.
@@ -11,7 +10,6 @@ function isLocalStorageAvailable() {
       localStorage.removeItem(testKey);
       return true;
   } catch (e) {
-      console.warn('LocalStorage is not available:', e);
       return false;
   }
 }
@@ -28,7 +26,6 @@ function getFromLocalStorage(key) {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : null;
   } catch (e) {
-      console.error(`Error retrieving item with key "${key}" from localStorage:`, e);
       return null;
   }
 }
@@ -44,7 +41,7 @@ function saveToLocalStorage(key, value) {
   try {
       localStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
-      console.error(`Error saving item with key "${key}" to localStorage:`, e);
+      console.error(`❌ Error guardando "${key}" en localStorage:`, e);
   }
 }
 
@@ -58,7 +55,7 @@ function removeFromLocalStorage(key) {
   try {
       localStorage.removeItem(key);
   } catch (e) {
-      console.error(`Error removing item with key "${key}" from localStorage:`, e);
+      console.error(`❌ Error eliminando "${key}" de localStorage:`, e);
   }
 }
 
@@ -71,17 +68,17 @@ export function saveProductToLocalStorage(product) {
   if (!isLocalStorageAvailable()) return;
 
   try {
-      localStorage.setItem('selectedProduct', JSON.stringify({
+      const productData = {
           title: product.title,
           price: product.price,
-          img: product.img,
-          vendor: product.vendor || 'Unknown Vendor'
-      }));
+          img: product.image,
+          vendor: product.vendor || 'Unknown Vendor',
+          sku: product.sku || 'N/A'
+      };
+      saveToLocalStorage('selectedProduct', productData);
   } catch (e) {
-      console.error('Failed to save product to localStorage:', e);
   }
 }
-
 
 export function clearProductFromLocalStorage() {
   removeFromLocalStorage('selectedProduct');

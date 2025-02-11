@@ -4,6 +4,7 @@ const prevButton = document.getElementById('prev-btn');
 const nextButton = document.getElementById('next-btn');
 const checkoutForm = document.getElementById('checkout-form');
 
+
 // Cargar datos previos si existen
 window.addEventListener('DOMContentLoaded', () => {
   loadFormDataFromLocalStorage();
@@ -16,6 +17,7 @@ function showStep(stepIndex) {
   });
   currentStep = stepIndex;
   updateNavigationButtons();
+  
   if (currentStep === steps.length - 1) {
     displaySummary();
   }
@@ -56,7 +58,6 @@ nextButton.addEventListener('click', () => {
       showStep(currentStep + 1);
     }
   } else {
-    alert('Order placed successfully!');
     localStorage.removeItem('cart');
     localStorage.removeItem('checkout-form');
     window.location.href = 'index.html';

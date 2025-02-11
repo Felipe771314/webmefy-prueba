@@ -10,31 +10,36 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         return;
     }
+    const productImage = product.img || 'img/default-product.png';
 
-    // Renderiza el detalle del producto
     productDetailContainer.innerHTML = `
         <div class="product-detail__wrapper">
             <div class="product-detail__image-container">
-                <img src="${product.image}" alt="${product.title}" class="product-detail__img">
+                <img src="${productImage}" alt="${product.title}" class="product-detail__img">
             </div>
             <div class="product-detail__info">
                 <h1>${product.title}</h1>
                 <p><strong>Price:</strong> €${parseFloat(product.price).toFixed(2)}</p>
                 <p><strong>Vendor:</strong> ${product.vendor}</p>
                 <p><strong>SKU:</strong> ${product.sku || 'N/A'}</p>
-                <button class="product-detail__add-btn" onclick="addToCartFromDetail()">Add to Cart</button>
+                <button id="add-to-cart-btn" class="product-detail__add-btn">Add to Cart</button>
                 <button class="product-detail__btn" onclick="window.location.href='index.html'">Go to Products</button>
             </div>
         </div>
     `;
+
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCartFromDetail);
 });
 
 function addToCartFromDetail() {
     const product = JSON.parse(localStorage.getItem('selectedProduct'));
-    if (product) {
-        import('./cart.js').then(({ addToCart }) => {
-            addToCart(product);
-            alert(`${product.title} has been added to the cart.`);
-        });
+
+    if (!product) {
+        return;
     }
+    import('./cart.js').then(({ addToCart }) => {
+        addToCart(product);
+    }).catch(error => {
+        console.error("Error al importar `cart.js`:", error);
+    });
 }

@@ -62,7 +62,3 @@ El proyecto está diseñado para ofrecer una navegación sencilla y rápida, gar
 
 ## 👨‍💻 Cómo Ejecutarlo Localmente
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/usuario/proyecto-carrito.git
-   cd proyecto-carrito
