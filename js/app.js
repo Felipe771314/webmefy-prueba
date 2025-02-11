@@ -27,6 +27,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Agregar eventos adicionales al cargar productos
   } catch (error) {
     console.error("Error al inicializar la aplicación:", error);
-    alert("There was a problem loading the products. Please try again later.");
   }
 });

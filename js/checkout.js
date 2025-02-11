@@ -4,6 +4,12 @@ const prevButton = document.getElementById('prev-btn');
 const nextButton = document.getElementById('next-btn');
 const checkoutForm = document.getElementById('checkout-form');
 
+// Cargar datos previos si existen
+window.addEventListener('DOMContentLoaded', () => {
+  loadFormDataFromLocalStorage();
+  showStep(0);
+});
+
 function showStep(stepIndex) {
   steps.forEach((step, index) => {
     step.classList.toggle('active', index === stepIndex);
@@ -46,11 +52,13 @@ function displaySummary() {
 nextButton.addEventListener('click', () => {
   if (currentStep < steps.length - 1) {
     if (validateStep(currentStep)) {
+      saveFormDataToLocalStorage();
       showStep(currentStep + 1);
     }
   } else {
     alert('Order placed successfully!');
     localStorage.removeItem('cart');
+    localStorage.removeItem('checkout-form');
     window.location.href = 'index.html';
   }
 });
@@ -75,8 +83,27 @@ function validateStep(stepIndex) {
   return isValid;
 }
 
+function saveFormDataToLocalStorage() {
+  const formData = new FormData(checkoutForm);
+  const dataObject = {};
+
+  formData.forEach((value, key) => {
+    dataObject[key] = value;
+  });
+
+  localStorage.setItem('checkout-form', JSON.stringify(dataObject));
+}
+
+function loadFormDataFromLocalStorage() {
+  const savedData = JSON.parse(localStorage.getItem('checkout-form'));
+  if (savedData) {
+    for (const [key, value] of Object.entries(savedData)) {
+      const input = document.querySelector(`[name="${key}"]`);
+      if (input) input.value = value;
+    }
+  }
+}
+
 function getCartFromLocalStorage() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
-
-showStep(0);

@@ -1,81 +1,63 @@
-// ------------ cart.js ------------
 export function initializeCart() {
     const cart = getCartFromLocalStorage();
     updateCartUI(cart);
-}
-
-export function addToCart(product) {
+  }
+  
+  export function addToCart(product) {
     let cart = getCartFromLocalStorage();
-
-    // Verificar si el producto ya está en el carrito (usamos SKU como criterio)
-    const existingProduct = cart.find(item => item.sku === product.sku);
-    if (existingProduct) {
-        alert(`${product.title} is already in your cart.`);
-        return;
-    }
-
-    // Agregar producto y actualizar UI
     cart.push(product);
     saveCartToLocalStorage(cart);
     updateCartUI(cart);
-}
-
-function updateCartUI(cart) {
+  }
+  
+  function updateCartUI(cart) {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
     const checkoutButton = document.getElementById('checkout-btn');
-
+  
     if (!cartItemsContainer || !cartCount || !checkoutButton) {
-        console.warn("Some cart UI elements are missing.");
-        return;
+      console.warn("Some cart UI elements are missing.");
+      return;
     }
-
+  
     cartItemsContainer.innerHTML = '';
     cartCount.textContent = cart.length;
     checkoutButton.disabled = cart.length === 0;
-
+  
     cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart__item');
-        cartItem.innerHTML = `
-            <img class="cart__item-img" src="${item.img}" alt="${item.title}">
-            <div class="cart__item-info">
-                <p>${item.title} - €${parseFloat(item.price).toFixed(2)}</p>
-                <button class="cart__remove-btn" data-index="${index}" aria-label="Remove ${item.title}">
-                    🗑️ Remove
-                </button>
-            </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart__item');
+      cartItem.innerHTML = `
+        <img class="cart__item-img" src="${item.img}" alt="${item.title}">
+        <div class="cart__item-info">
+          <p>${item.title} - €${parseFloat(item.price).toFixed(2)}</p>
+          <button class="cart__remove-btn" data-index="${index}" aria-label="Remove ${item.title}">
+            🗑️ Remove
+          </button>
+        </div>
+      `;
+      cartItemsContainer.appendChild(cartItem);
     });
-
+  
     attachRemoveEvents(cart);
-}
-
-function attachRemoveEvents(cart) {
+  }
+  
+  function attachRemoveEvents(cart) {
     document.querySelectorAll('.cart__remove-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const index = e.target.dataset.index;
-            cart.splice(index, 1);
-            saveCartToLocalStorage(cart);
-            updateCartUI(cart);
-        });
+      button.addEventListener('click', (e) => {
+        const index = e.target.dataset.index;
+        cart.splice(index, 1);
+        saveCartToLocalStorage(cart);
+        updateCartUI(cart);
+      });
     });
-}
-
-export function proceedToCheckout() {
-    window.location.href = 'checkout.html';
-}
-
-function getCartFromLocalStorage() {
+  }
+  
+  function getCartFromLocalStorage() {
     return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function saveCartToLocalStorage(cart) {
+  }
+  
+  function saveCartToLocalStorage(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-// Manejar la visibilidad del carrito dinámicamente
-document.getElementById('view-cart')?.addEventListener('click', () => {
-    document.getElementById('cart-section')?.classList.toggle('cart--hidden');
-});
+  }
+  

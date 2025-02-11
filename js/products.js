@@ -6,10 +6,12 @@ export function displayProducts(products) {
     productsList.innerHTML = '';
 
     products.forEach((product, index) => {
-        // Generar un id único para el producto si no hay SKU
-        const productId = product.sku || `product-${index}`;
+        // Generar un ID único solo si el producto no tiene SKU
+        if (!product.sku) {
+            product.sku = `product-${index}`;
+        }
 
-        // Verificación de datos mínimos
+        // Verificación y asignación de valores predeterminados
         const productTitle = product.title || 'Unnamed Product';
         const productPrice = product.price || '0.00';
         const productImage = product.image || 'img/default-product.png';
@@ -23,10 +25,10 @@ export function displayProducts(products) {
             <h3 class="product-card__title">${productTitle}</h3>
             <p class="product-card__price">Price: €${parseFloat(productPrice).toFixed(2)}</p>
             <p class="product-card__vendor">Vendor: ${productVendor}</p>
-            <p class="product-card__sku">ID: ${productId}</p>
+            <p class="product-card__sku">ID: ${product.sku}</p>
             <div class="product-card__actions">
-                <button class="product-card__btn" data-id="${productId}">Add to Cart</button>
-                <a href="product-detail.html" class="product-detail-link" data-id="${productId}">View Details</a>
+                <button class="product-card__btn" data-index="${index}">Add to Cart</button>
+                <a href="product-detail.html" class="product-detail-link" data-index="${index}">View Details</a>
             </div>
         `;
         productsList.appendChild(productCard);
@@ -39,8 +41,8 @@ function attachProductEvents(products) {
     // Manejar "Add to Cart"
     document.querySelectorAll('.product-card__btn').forEach(button => {
         button.addEventListener('click', (e) => {
-            const productId = e.target.getAttribute('data-id');
-            const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
+            const productIndex = e.target.getAttribute('data-index');
+            const product = products[productIndex];
 
             if (!product || !product.title || !product.price) {
                 console.warn("Product data is incomplete:", product);
@@ -59,8 +61,8 @@ function attachProductEvents(products) {
     // Manejar "View Details"
     document.querySelectorAll('.product-detail-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            const productId = e.target.getAttribute('data-id');
-            const product = products.find((p, index) => p.sku === productId || `product-${index}` === productId);
+            const productIndex = e.target.getAttribute('data-index');
+            const product = products[productIndex];
 
             if (!product || !product.title || !product.price || !product.img) {
                 console.warn("Product data is incomplete for details view:", product);
