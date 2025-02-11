@@ -1,3 +1,4 @@
+// ------------ cart.js ------------
 export function initializeCart() {
     const cart = getCartFromLocalStorage();
     updateCartUI(cart);
@@ -12,7 +13,9 @@ export function addToCart(product) {
 
 function updateCartUI(cart) {
     const cartItemsContainer = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
     cartItemsContainer.innerHTML = '';
+    cartCount.textContent = cart.length;
 
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
@@ -21,7 +24,7 @@ function updateCartUI(cart) {
             <img class="cart__item-img" src="${item.img}" alt="${item.title}">
             <div class="cart__item-info">
                 <p>${item.title} - €${parseFloat(item.price).toFixed(2)}</p>
-                <button class="cart__remove-btn" data-index="${index}">Remove</button>
+                <button class="cart__remove-btn" data-index="${index}">🗑️ Remove</button>
             </div>
         `;
         cartItemsContainer.appendChild(cartItem);
@@ -35,15 +38,15 @@ function updateCartUI(cart) {
             updateCartUI(cart);
         });
     });
+
+    const checkoutButton = document.getElementById('checkout-btn');
+    checkoutButton.disabled = cart.length === 0;
 }
-
-
 
 export function proceedToCheckout() {
     window.location.href = 'checkout.html';
 }
 
-// Almacenar y recuperar carrito del Local Storage
 function getCartFromLocalStorage() {
     return JSON.parse(localStorage.getItem('cart')) || [];
 }
