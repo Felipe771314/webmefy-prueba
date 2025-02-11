@@ -5,8 +5,8 @@ import { initializeCart, proceedToCheckout } from './cart.js';
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const orderData = await fetchOrderData();
-        if (orderData && orderData.line_items) {
-            displayProducts(orderData.line_items);
+        if (orderData && orderData.order.line_items) {
+            displayProducts(orderData.order.line_items);
             initializeCart();
         } else {
             console.error('No se encontraron productos en la respuesta.');
