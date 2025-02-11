@@ -1,5 +1,4 @@
-import { getProductFromLocalStorage, saveProductToLocalStorage } from './utils.js';
-import { addToCart } from './cart.js';
+import { getProductFromLocalStorage } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const product = getProductFromLocalStorage();
@@ -13,19 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Renderiza el detalle del producto
     productDetailContainer.innerHTML = `
-        <div class="product-detail__content">
-            <img src="${product.img}" alt="${product.title}" class="product-detail__img">
-            <h1>${product.title}</h1>
-            <p>Price: €${parseFloat(product.price).toFixed(2)}</p>
-            <p><strong>Vendor:</strong> ${product.vendor || 'N/A'}</p>
-            <p><strong>Description:</strong> ${product.description || 'No description available.'}</p>
-            <button id="add-to-cart-btn" class="product-detail__btn">Add to Cart</button>
+        <div class="product-detail__wrapper">
+            <div class="product-detail__image-container">
+                <img src="${product.img}" alt="${product.title}" class="product-detail__img">
+            </div>
+            <div class="product-detail__info">
+                <h1>${product.title}</h1>
+                <p><strong>Price:</strong> €${parseFloat(product.price).toFixed(2)}</p>
+                <p><strong>Vendor:</strong> ${product.vendor}</p>
+                <p><strong>SKU:</strong> ${product.sku || 'N/A'}</p>
+                <button class="product-detail__add-btn" onclick="addToCartFromDetail()">Add to Cart</button>
+                <button class="product-detail__btn" onclick="window.location.href='index.html'">Go to Products</button>
+            </div>
         </div>
     `;
-
-    document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-        addToCart(product);
-        alert(`${product.title} has been added to your cart.`);
-    });
 });
+
+function addToCartFromDetail() {
+    const product = getProductFromLocalStorage();
+    if (product) {
+        import('./cart.js').then(({ addToCart }) => {
+            addToCart(product);
+            alert(`${product.title} has been added to the cart.`);
+        });
+    }
+}
