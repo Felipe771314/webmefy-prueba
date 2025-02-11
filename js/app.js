@@ -5,7 +5,7 @@ import { initializeCart, proceedToCheckout } from './cart.js';
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const orderData = await fetchOrderData();
-        displayProducts(orderData.line_items);
+        displayProducts(orderData.order.line_items);
         initializeCart();
 
         // Evento para el botón de checkout
