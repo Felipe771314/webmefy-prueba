@@ -1,8 +1,6 @@
 import { fetchOrderData } from "./fetchData.js";
 import { displayProducts } from "./products.js";
 import { initializeCart, proceedToCheckout } from "./cart.js";
-import { getProductFromLocalStorage } from "./utils.js"; // Si necesitas mostrar la vista del carrito
-import { handleProductDetails } from "./productDetail.js"; // Si gestionamos eventos del detalle del producto
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -27,8 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Agregar eventos adicionales al cargar productos
-    getProductFromLocalStorage(); // Función para mostrar carrito en tiempo real
-    handleProductDetails(); // Maneja clics en productos y redirección al detalle
   } catch (error) {
     console.error("Error al inicializar la aplicación:", error);
     alert("There was a problem loading the products. Please try again later.");
