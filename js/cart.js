@@ -64,3 +64,9 @@ function getCartFromLocalStorage() {
 function saveCartToLocalStorage(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+const cartSection = document.getElementById('cart-section');
+const cartToggleButton = document.getElementById('view-cart');
+
+cartToggleButton.addEventListener('click', () => {
+    cartSection.classList.toggle('cart--hidden');
+});

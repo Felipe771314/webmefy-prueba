@@ -23,3 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 });
+function renderCrossSelling(products) {
+    const crossSellingSection = document.getElementById('cross-selling');
+    crossSellingSection.innerHTML = '<h2>You may also like</h2>';
+    products.forEach(product => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cross-selling__item');
+        itemDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.title}">
+            <p>${product.title}</p>
+        `;
+        crossSellingSection.appendChild(itemDiv);
+    });
+}
+
+// Llamar esta función con productos mock
+renderCrossSelling([
+    { title: "Recommended Product 1", image: "img/recommended1.png" },
+    { title: "Recommended Product 2", image: "img/recommended2.png" }
+]);
