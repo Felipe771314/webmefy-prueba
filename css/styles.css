@@ -484,3 +484,25 @@ input, select {
     right: 25%;
   }
 }
+.pruduct__section {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 995px) {
+  .pruduct__section {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 994px) {
+  .pruduct__section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .pruduct__section {
+    grid-template-columns: 1fr;
+  }
+}
