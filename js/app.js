@@ -1,3 +1,7 @@
+import { fetchOrderData } from "./fetchData.js";
+import { displayProducts } from "./products.js";
+import { initializeCart } from "./cart.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const orderData = await fetchOrderData();
