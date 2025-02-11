@@ -201,11 +201,16 @@ body {
 
   .cart {
     width: 25%;
-    right: 20px;
+    right: 25%;
   }
 
   .product-card {
     width: 100%;
+  }
+  .products-list {
+    display: block;
+    justify-content: center;
+    gap: 10px;
   }
 }
 /* Estilo general para la página de detalles del producto */
@@ -299,4 +304,72 @@ body {
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+.products-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.checkout-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-step {
+  display: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checkout-step.active {
+  display: block;
+  opacity: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.input-error {
+  border-color: #e74c3c;
+  background-color: #fdecea;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#prev-btn, #next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#prev-btn {
+  background-color: #cccccc;
+}
+
+#next-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+#next-btn:hover {
+  background-color: #0056b3;
 }

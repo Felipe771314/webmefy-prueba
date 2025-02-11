@@ -9,7 +9,6 @@ function showStep(stepIndex) {
     step.classList.toggle('active', index === stepIndex);
   });
   currentStep = stepIndex;
-
   updateNavigationButtons();
   if (currentStep === steps.length - 1) {
     displaySummary();
@@ -44,17 +43,15 @@ function displaySummary() {
   });
 }
 
-// Validación y navegación entre pasos
 nextButton.addEventListener('click', () => {
   if (currentStep < steps.length - 1) {
     if (validateStep(currentStep)) {
       showStep(currentStep + 1);
     }
   } else {
-    // Lógica para colocar el pedido
     alert('Order placed successfully!');
     localStorage.removeItem('cart');
-    window.location.href = 'index.html'; // Volver a la tienda principal
+    window.location.href = 'index.html';
   }
 });
 
@@ -64,18 +61,22 @@ prevButton.addEventListener('click', () => {
 
 function validateStep(stepIndex) {
   const inputs = steps[stepIndex].querySelectorAll('input, select');
-  for (let input of inputs) {
+  let isValid = true;
+
+  inputs.forEach(input => {
     if (!input.checkValidity()) {
-      alert(`Please fill out the ${input.placeholder || input.name} field.`);
-      return false;
+      input.classList.add('input-error');
+      isValid = false;
+    } else {
+      input.classList.remove('input-error');
     }
-  }
-  return true;
+  });
+
+  return isValid;
 }
 
 function getCartFromLocalStorage() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// Mostrar el primer paso
 showStep(0);
