@@ -46,13 +46,31 @@ function attachProductEvents(products) {
 
     document.querySelectorAll('.product-detail-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            const productId = e.target.getAttribute('data-product-id');
-            const product = products.find(p => p.id.toString() === productId);
-            if (product) {
-                saveProductToLocalStorage(product);
-            } else {
-                console.error('Product not found for details:', productId);
-            }
+          e.preventDefault();
+          const product = JSON.parse(e.target.getAttribute('data-product'));
+          saveProductToLocalStorage(product);
+          window.location.href = 'product-detail.html';
         });
-    });
+      });
+      
 }
+function displayCrossSelling() {
+    const relatedProductsContainer = document.getElementById('related-products');
+    const relatedProducts = JSON.parse(localStorage.getItem('relatedProducts')) || [];
+  
+    relatedProducts.forEach(product => {
+      const item = document.createElement('div');
+      item.classList.add('cross-selling__item');
+      item.innerHTML = `
+        <img src="${product.img}" alt="${product.title}">
+        <p>${product.title}</p>
+        <button onclick="addToCart(${JSON.stringify(product)})">Add to Cart</button>
+      `;
+      relatedProductsContainer.appendChild(item);
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    displayCrossSelling();
+  });
+  

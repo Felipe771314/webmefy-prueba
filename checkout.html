@@ -1,27 +1,49 @@
-<section id="step-1" class="checkout-step">
-  <h2>Step 1: Customer Information</h2>
-  <input type="text" placeholder="Full Name" required>
-  <input type="email" placeholder="Email" required>
-</section>
-
-<section id="step-2" class="checkout-step">
-  <h2>Step 2: Address</h2>
-  <input type="text" placeholder="Street" required>
-  <input type="text" placeholder="City" required>
-</section>
-
-<section id="step-3" class="checkout-step">
-  <h2>Step 3: Payment Method</h2>
-  <select required>
-      <option value="credit-card">Credit Card</option>
-      <option value="paypal">PayPal</option>
-  </select>
-</section>
-
-<section id="summary-step" class="checkout-step">
-  <h2>Order Summary</h2>
-  <div id="summary-items"></div>
-</section>
-
-<button id="prev-btn">Previous</button>
-<button id="next-btn">Next</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+</head>
+<body>
+  <section class="checkout-container">
+    <form id="checkout-form">
+      <!-- Step 1: Información del cliente -->
+      <div id="step-1" class="checkout-step">
+        <h2>Step 1: Customer Information</h2>
+        <input type="text" id="full-name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+  
+      <!-- Step 2: Dirección -->
+      <div id="step-2" class="checkout-step">
+        <h2>Step 2: Address</h2>
+        <input type="text" id="street" placeholder="Street" required>
+        <input type="text" id="city" placeholder="City" required>
+      </div>
+  
+      <!-- Step 3: Método de pago -->
+      <div id="step-3" class="checkout-step">
+        <h2>Step 3: Payment Method</h2>
+        <select id="payment-method" required>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+  
+      <!-- Resumen del pedido -->
+      <div id="summary-step" class="checkout-step">
+        <h2>Order Summary</h2>
+        <div id="summary-items"></div>
+      </div>
+  
+      <!-- Navegación de pasos -->
+      <div class="buttons-container">
+        <button type="button" id="prev-btn">Previous</button>
+        <button type="button" id="next-btn">Next</button>
+      </div>
+    </form>
+  </section>
+  
+</body>
+</html>
