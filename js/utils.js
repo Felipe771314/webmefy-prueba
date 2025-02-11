@@ -68,8 +68,20 @@ export function getProductFromLocalStorage() {
 }
 
 export function saveProductToLocalStorage(product) {
-    saveToLocalStorage('selectedProduct', product);
+    if (!isLocalStorageAvailable()) return;
+
+    try {
+        localStorage.setItem('selectedProduct', JSON.stringify({
+            title: product.title,
+            price: product.price,
+            img: product.img,
+            vendor: product.vendor || 'Unknown Vendor'
+        }));
+    } catch (e) {
+        console.error('Failed to save product to localStorage:', e);
+    }
 }
+
 
 export function clearProductFromLocalStorage() {
     removeFromLocalStorage('selectedProduct');

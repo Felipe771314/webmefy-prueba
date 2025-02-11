@@ -60,6 +60,8 @@ export function initializeCart() {
   function saveCartToLocalStorage(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
+  
+  // Nueva función exportada
   export function proceedToCheckout() {
     window.location.href = 'checkout.html';
   }
