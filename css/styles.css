@@ -385,8 +385,17 @@ input, select {
 
 /* items Sumary */
 .summary-item{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+.summary-item__title{
+  margin: 2rem 0 2rem 0;
+}
+.summary-item__subtitle{
+  margin: 1rem 0 1rem 0;
+}
+.summary-item__img{
+  width: 150px;
+  height: auto;
 }
 /* Media Queries Unificadas */
 @media (max-width: 576px) {
